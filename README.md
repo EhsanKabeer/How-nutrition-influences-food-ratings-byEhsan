@@ -38,3 +38,5 @@ For visualization purposes I made new columns for each nutrition fact that split
  frameborder="0"
  ></iframe>
 
+With this graph we are exploring the distribution of fat level in a recipe among the differnt ratings, the fat level was split into low fat, moderate fat, and high fat. With this visualization I wanted to see if consumers prefer a more low fat option for the recipes they are cooking up as opposed to a high fat ones. From the graph you can see that five star rated items tend to be on the lower fat side, and if you look closely at the 3 star distribution, high fat items slightly are above in percentage compared to lower fat options. So from this visualization there is slight trend pointing to the fact that low fat items are the preferred recipes.
+
