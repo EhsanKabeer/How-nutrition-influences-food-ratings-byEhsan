@@ -32,7 +32,7 @@ For visualization purposes I made new columns for each nutrition fact that split
 ### Univariate Analysis
 
  <iframe
- src="assets/Rating_distribution_by_fat.html"
+ src="assests/Rating_distribution_by_fat.html"
  width="800"
  height="600"
  frameborder="0"
@@ -41,7 +41,7 @@ For visualization purposes I made new columns for each nutrition fact that split
 With this graph we are exploring the distribution of fat level in a recipe among the differnt ratings, the fat level was split into low fat, moderate fat, and high fat. With this visualization I wanted to see if consumers prefer a more low fat option for the recipes they are cooking up as opposed to a high fat ones. From the graph you can see that five star rated items tend to be on the lower fat side, and if you look closely at the 3 star distribution, high fat items slightly are above in percentage compared to lower fat options. So from this visualization there is slight trend pointing to the fact that low fat items are the preferred recipes.
 
 <iframe
- src="assets/Calorie_trend_plot.html"
+ src="assests/Calorie_trend_plot.html"
  width="800"
  height="600"
  frameborder="0"
@@ -52,7 +52,7 @@ With this graph we are exploring the distritbution of calorie level in a recipe 
 ### Bivariate Analysis
 
 <iframe
- src="assets/Sodium.html"
+ src="assests/Sodium.html"
  width="800"
  height="600"
  frameborder="0"
@@ -87,4 +87,48 @@ This grouped table is grouped on the saturated fat class and average rating, and
 ### Imputation
 
 One of the columns that had to be imputed was the rating column. Some of the rows in the rating columns had a value of 0 which is a invalid rating so what I chose to do is I made those rows null for their rating, as mentioned before then I did a mean imputation for the null ratings by their respective recipes, which would allow me to keep the general distribution of the dataset while not losing any data from table (some recipes only had 0 ratings, so they were dropped completely from data after mean imputation). In the figures below we show the distribution of ratings before the imputation and after.
+
+<iframe
+ src="assests/unimputed_distributed.html"
+ width="800"
+ height="600"
+ frameborder="0"
+ ></iframe>
+
+<iframe
+ src="assests/imputed_distributed.html"
+ width="800"
+ height="600"
+ frameborder="0"
+ ></iframe>
+
+## Framing a Prediction Problem
+
+### Prediction Problem
+
+We are looking to predict the rating of a recipe based on the nutritional facts of a recipe namely calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV). So, given all the nutritional data of a particular recipe, can we accurately predict its rating? We will be using a Linear Regression model to predict the rating using nutritional data since the rating is a continuous variable.
+
+### Response variable
+
+Since the rating of a recipe indicates how good that recipe is for others cook and eat, we will use it as our response variable to explore how nutritional metrics of a recipe effect its rating.
+
+### Predictor variables
+
+The predictor varibles I chose were the following: calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV). Since these values correlate to how healthy or unhealthy, or how filling or non-filling a recipe is, they could influence the rating of a recipe greatly. Since these values are derived from the ingredients of a recipe it is known before the recipe is rated.
+
+### Metric to Evaluate Model
+
+Since we are using a Linear regression model, mean sqaured error is definetly the appropriate metric to evaluate model performace, as it is the standard for Linear Regression and it gives a direct way of interpreting performance of model.
+
+## Baseline Model
+
+### Model
+
+Linear Regression was the model selected for this problem since its easy to interpret based on its coefficients.
+
+### Features in Model
+
+The features used in the model were calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), and carbohydrates (PDV) which are all quantitative so a total of 7 quantitative variables. No ordinal or nomial features were used so there was no need for any encoding for this model.
+
+### Performance
 
