@@ -13,7 +13,7 @@ by Ehsan Kabeer (eskabeer@umich.edu)
 
 ### Cleaning
 
-Before I got into any predictive model bulidng I had to clean up the dataset. The dataset was initially was split into two tables, one with the actual recipes and their respective details and another with the users ratings and their thoughts on the recipes. What I did was merge the two tables with the left merge, using the recipe ids. After this I dropped the null rows from table and filled the ratings in the table with a value of 0 as null (since scale is 1-5) and after this I did a mean imputation for the null rating by their respective recipes, which would allow me to keep the general distribution of the dataset while not losing any data from table (some recipes only had 0 ratings, so they were dropped completely from data after mean imputation).
+Before I got into any predictive model bulidng I had to clean up the dataset. The dataset was initially was split into two tables, one with the actual recipes and their respective details and another with the users ratings and their thoughts on the recipes. What I did was merge the two tables with the left merge, using the recipe ids. After this I dropped the null rows from table and filled the ratings in the table with a value of 0 as null (since scale is 1-5).
 
 After I did this I wanted to get rid of columns from the table that weren't relevant for the model building process. This resulted in the removal of columns: recipe_id, user_id, date, submitted, minutes, tags, n_steps, steps, description, ingredients, review, contributor_id, and n_ingredients.
 
@@ -39,4 +39,52 @@ For visualization purposes I made new columns for each nutrition fact that split
  ></iframe>
 
 With this graph we are exploring the distribution of fat level in a recipe among the differnt ratings, the fat level was split into low fat, moderate fat, and high fat. With this visualization I wanted to see if consumers prefer a more low fat option for the recipes they are cooking up as opposed to a high fat ones. From the graph you can see that five star rated items tend to be on the lower fat side, and if you look closely at the 3 star distribution, high fat items slightly are above in percentage compared to lower fat options. So from this visualization there is slight trend pointing to the fact that low fat items are the preferred recipes.
+
+<iframe
+ src="assets/Calorie_trend_plot.html"
+ width="800"
+ height="600"
+ frameborder="0"
+ ></iframe>
+
+With this graph we are exploring the distritbution of calorie level in a recipe among the different ratings, just like with fat this was split into low calorie, moderate calorie, and high calorie. With this graph I wanted to further investigate whether consumers prefer healthier or less healthy options. This graph again shows that the five star items are teh lower claorie items with low calorie being highest percentage and moderate being a close second. The lower ratings like four and three star both had high calorie as top, which further soldifies that trend that healthier options tend to be more highly rated.
+
+### Bivariate Analysis
+
+<iframe
+ src="assets/Sodium.html"
+ width="800"
+ height="600"
+ frameborder="0"
+ ></iframe>
+
+For this graph I took a simple random sample from data of 20,000 so the graph is more easily interpretable. For this graph I am how the sodium(PDV) infuences the average ratings of the recipes. I wanted to see if consumers preferred salty snacks when considering what to make. From the graph we can see that as salt content gest higher rating seem to get higher, which I was suprised by since in the other graphs it was seen that consumers preferred more healthy recipes.
+
+### Pivot table
+
+satFatClass represents the classification of the saturated fat content for a particular recipe. With the categories being unhealthy, caution, and heart-healthy. These designations were made since saturated fats are the actual unhealthy fats in food.
+
+| satFatClass   |   rating_avg |   calories |
+|:--------------|-------------:|-----------:|
+| Caution       |            1 |    246.852 |
+| Caution       |            2 |    284.562 |
+| Caution       |            3 |    244.674 |
+| Caution       |            4 |    262.265 |
+| Caution       |            5 |    238.242 |
+| Heart_healthy |            1 |    160.828 |
+| Heart_healthy |            2 |    185.624 |
+| Heart_healthy |            3 |    196.456 |
+| Heart_healthy |            4 |    181.42  |
+| Heart_healthy |            5 |    173.945 |
+| Unhealthy     |            1 |    660.587 |
+| Unhealthy     |            2 |    619.091 |
+| Unhealthy     |            3 |    620.657 |
+| Unhealthy     |            4 |    574.03  |
+| Unhealthy     |            5 |    572.7   |
+
+This grouped table is grouped on the saturated fat class and average rating, and we are getting the mean calories for each group. What I wanted to explore here is to see the behavior of consumers on how much calories they prefer to be in a recipe based on how healthy that recipe is. A interesting trend that can be gathered from this table is that when consumers choose to make a unhealthy or even moderately unhealthy recipe they prefer the lower calorie options, but when they choose to make a healthy food, they were fine with the recipe being higher in calories. 
+
+### Imputation
+
+One of the columns that had to be imputed was the rating column. Some of the rows in the rating columns had a value of 0 which is a invalid rating so what I chose to do is I made those rows null for their rating, as mentioned before then I did a mean imputation for the null ratings by their respective recipes, which would allow me to keep the general distribution of the dataset while not losing any data from table (some recipes only had 0 ratings, so they were dropped completely from data after mean imputation). In the figures below we show the distribution of ratings before the imputation and after.
 
