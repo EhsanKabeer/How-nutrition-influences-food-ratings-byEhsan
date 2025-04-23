@@ -141,3 +141,4 @@ Before I moved on to actual improvements on model, I used Standard scalar on mod
 After trial and error and cross-validation Ridge came out on top as teh better modeling algorithm, with lasso actually performing worse than base model. The hyperparamters that performed best were I chose degree as one of the hyperparameters since I wanted to see which degree will capture the non-linear relations apprent in the data. I also used Ridge alpha as hyperparamter to find the perfect penalization of the coefficients.
 
 
+The MSE of the final model is 0.25653 which is a slight improvement over 0.25594. Even though this is a small improvement its still some improvement which is great, and shows that final model does better on unseen data than the base model
