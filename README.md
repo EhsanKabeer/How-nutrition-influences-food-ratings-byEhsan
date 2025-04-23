@@ -132,3 +132,12 @@ The features used in the model were calories (#), total fat (PDV), sugar (PDV), 
 
 ### Performance
 
+The performance of this model was measured using mean squared error as mentioned before. It takes a sum of teh magnitude between predicted and actual values in test set, with a lower MSE meaning better performance. With the base model a MSE of 0.255947 was acheived. Since the scale of values for the ratings is 1-5 this performance is relatively good but there is still room for improvement which we will try and do below.
+
+## Final Model
+
+Before I moved on to actual improvements on model, I used Standard scalar on model since some of the features, namely calories, are on a different and larger scale than the other features, so standard scaler will bring these to a mean of 0 and a standard deviation of 1 which will allow easier interpretation of what the important features in the model. In terms of the steps I took to actually improve the model, I used polynomial features to handle potential cases of non-linear relationships showing up in the data and I also used ridge and lasso regression so handle unimportant features. By spotting out non-linear relations with the model and also eliminating unimportant features the model will be able to capture the more unexpected relations between nutrition data and ratings, which will produce better results.
+
+After trial and error and cross-validation Ridge came out on top as teh better modeling algorithm, with lasso actually performing worse than base model. The hyperparamters that performed best were I chose degree as one of the hyperparameters since I wanted to see which degree will capture the non-linear relations apprent in the data. I also used Ridge alpha as hyperparamter to find the perfect penalization of the coefficients.
+
+
